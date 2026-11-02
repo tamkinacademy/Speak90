@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPEAK90 · ৯০ দিনে ইংরেজিতে কথা বলা</title>
+<meta name="description" content="গ্রামারসহ ৯০ দিনের ধাপে ধাপে ইংরেজি স্পিকিং কোর্স। প্রতিদিন ১ ঘণ্টা, ফ্রি।">
+<meta name="theme-color" content="#060912">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060912;--card:#0f1424;--card2:#141a2e;--line:#ffffff14;--line2:#ffffff26;--text:#e9edf7;--mute:#98a1b8;--a:#5eead4;--b:#60a5fa;--c:#a78bfa;--ok:#34d399;--warn:#fbbf24;
+--sans:'Hind Siliguri',sans-serif;--serif:'Noto Serif Bengali',serif;--latin:'Montserrat',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(800px 500px at 90% -10%,#60a5fa1c,transparent 60%),radial-gradient(700px 500px at -10% 30%,#5eead41a,transparent 60%)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px;position:relative}
+.grad{background:linear-gradient(120deg,var(--a),var(--b) 55%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{position:sticky;top:0;z-index:40;background:#060912d0;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--latin);font-weight:800;letter-spacing:.12em;font-size:18px}
+.logo b{color:var(--a)}
+.links{display:flex;gap:24px;font-size:15px;color:var(--mute)}
+.links a:hover{color:var(--a)}
+.pill{font-size:13px;color:var(--a);border:1px solid #5eead455;padding:3px 14px;border-radius:99px;white-space:nowrap}
+@media(max-width:620px){.links{display:none}}
+
+.hero{padding:64px 0 70px;display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+.eyebrow{font-family:var(--latin);font-size:12px;font-weight:700;letter-spacing:.3em;color:var(--a);margin-bottom:16px}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(38px,6.4vw,72px);line-height:1.18}
+.lead{color:var(--mute);font-size:19px;max-width:520px;margin:20px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:13px 26px;border-radius:99px;font-weight:600;font-size:16px;border:0;cursor:pointer;transition:.25s}
+.btn.p{background:linear-gradient(120deg,var(--a),var(--b));color:#04121a;box-shadow:0 10px 36px -10px #5eead499}
+.btn.p:hover{transform:translateY(-2px)}
+.btn.g{background:none;border:1px solid var(--line2);color:var(--text)}
+.btn.g:hover{border-color:var(--a);color:var(--a)}
+.facts{display:flex;gap:30px;margin-top:38px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap}
+.facts b{font-family:var(--serif);font-size:30px;display:block;line-height:1.2}
+.facts span{font-size:14px;color:var(--mute)}
+.ringCard{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:26px;padding:30px;text-align:center}
+.ring{position:relative;width:200px;height:200px;margin:0 auto 18px}
+.ring svg{transform:rotate(-90deg)}
+.ring .mid{position:absolute;inset:0;display:grid;place-content:center}
+.ring .mid b{font-family:var(--serif);font-size:44px;line-height:1}
+.ring .mid span{color:var(--mute);font-size:14px}
+.ringCard .row{display:flex;justify-content:space-around;margin-top:16px;color:var(--mute);font-size:14px}
+.ringCard .row b{display:block;color:var(--text);font-size:22px;font-family:var(--serif)}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:36px}}
+
+section{padding:64px 0}
+.sh{margin-bottom:30px}
+.sh h2{font-family:var(--serif);font-weight:800;font-size:clamp(28px,4.4vw,42px);line-height:1.25}
+.sh p{color:var(--mute);margin-top:8px;max-width:560px}
+.rule{width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--a),var(--b));margin-bottom:14px}
+
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.how div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.how i{font-style:normal;font-size:26px;display:block;margin-bottom:6px}
+.how b{display:block;font-size:17px}
+.how span{color:var(--mute);font-size:14px}
+.note{margin-top:18px;color:var(--mute);font-size:14px;background:#fbbf2410;border:1px solid #fbbf2433;border-radius:14px;padding:12px 16px}
+
+.week{margin-bottom:26px}
+.wh{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.wh b{font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--a)}
+.wh span{font-weight:600;font-size:18px}
+.wh em{margin-left:auto;font-style:normal;font-size:13px;color:var(--mute)}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.day{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left;color:var(--text);transition:.2s}
+.day:hover{border-color:#5eead466;transform:translateY(-2px)}
+.day .n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--latin);font-weight:700;font-size:13px;background:#ffffff10;color:var(--mute)}
+.day .t{font-size:14.5px;line-height:1.4;flex:1}
+.day.done{border-color:#34d39944;background:#34d3990d}
+.day.done .n{background:var(--ok);color:#03160d}
+.day.now{border-color:var(--a);box-shadow:0 0 0 3px #5eead422}
+.day.now .n{background:var(--a);color:#04121a}
+
+.search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:12px 22px;color:var(--text);font-size:16px;outline:none;margin-bottom:18px}
+.search:focus{border-color:var(--a)}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.gi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;transition:.2s}
+.gi:hover{border-color:#60a5fa66}
+.gi small{color:var(--a);font-family:var(--latin);font-weight:700;font-size:11px;letter-spacing:.15em}
+.gi b{display:block;font-size:17px;margin:2px 0}
+.gi span{color:var(--mute);font-size:14px;display:block;line-height:1.55}
+
+footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--mute);font-size:14px}
+
+/* lesson */
+.ov{position:fixed;inset:0;z-index:80;background:var(--bg);overflow-y:auto;display:none}
+.ov.open{display:block;animation:up .3s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+.obar{position:sticky;top:0;z-index:3;background:#060912e6;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:12px 18px}
+.obar .x{width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:none;color:var(--text);font-size:20px;cursor:pointer}
+.obar .x:hover{border-color:var(--a);color:var(--a)}
+.obar .ttl{font-weight:600;flex:1;font-size:15px;color:var(--mute)}
+.lesson{max-width:720px;margin:0 auto;padding:36px 20px 100px}
+.lesson .dn{font-family:var(--latin);font-weight:700;font-size:12px;letter-spacing:.25em;color:var(--a)}
+.lesson h2{font-family:var(--serif);font-size:clamp(28px,5vw,40px);line-height:1.3;margin:6px 0 20px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin-bottom:18px}
+.box h4{font-size:13px;letter-spacing:.14em;font-family:var(--latin);color:var(--b);margin-bottom:10px}
+.rule-t{font-size:18px;line-height:1.85}
+.ex{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+.ex:first-of-type{border-top:0}
+.ex .sp{flex:none;width:42px;height:42px;border-radius:50%;border:1px solid #5eead466;background:#5eead414;color:var(--a);cursor:pointer;font-size:17px}
+.ex .sp:hover{background:var(--a);color:#04121a}
+.ex .en{font-size:19px;font-weight:600;line-height:1.5}
+.ex .bn{color:var(--mute);font-size:15px}
+.steps{list-style:none}
+.steps li{display:flex;gap:12px;align-items:center;padding:7px 0;color:var(--text);font-size:16px}
+.steps li i{flex:none;font-style:normal;font-family:var(--latin);font-size:12px;font-weight:700;color:#04121a;background:var(--a);border-radius:99px;padding:1px 10px}
+.task{border-color:#a78bfa55;background:linear-gradient(160deg,#a78bfa14,var(--card))}
+.task h4{color:var(--c)}
+.rec{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.rec audio{flex:1;min-width:200px;height:40px}
+.recbtn.on{background:#ef4444;color:#fff;border-color:#ef4444}
+.fin{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.fin .btn{flex:1;min-width:140px}
+.done-btn.is{background:var(--ok);color:#03160d}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#0f1424;border:1px solid var(--a);color:var(--text);padding:10px 22px;border-radius:99px;z-index:200;opacity:0;pointer-events:none;transition:.3s}
+.toast.on{opacity:1}
+
+.nav .links{gap:20px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{padding:7px 18px;border-radius:99px;border:1px solid var(--line2);background:none;color:var(--mute);cursor:pointer;font-size:14px}
+.tab.on,.tab:hover{border-color:var(--a);color:var(--a)}
+.tab.on{background:#5eead414}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.vt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;transition:.2s;text-align:left;color:var(--text)}
+.vt:hover{border-color:#60a5fa66;transform:translateY(-3px)}
+.vt i{font-style:normal;font-size:28px;display:block}
+.vt b{display:block;font-size:16px;margin:4px 0 2px;line-height:1.4}
+.vt span{font-size:13px;color:var(--mute)}
+.bar{height:5px;border-radius:5px;background:#ffffff14;margin-top:10px;overflow:hidden}
+.bar div{height:100%;background:linear-gradient(90deg,var(--a),var(--b));width:0}
+.wrow{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.wrow:first-child{border-top:0}
+.wrow .sp{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid #5eead466;background:#5eead414;color:var(--a);cursor:pointer;font-size:15px}
+.wrow .w{flex:1}
+.wrow .w b{font-size:18px;display:block;line-height:1.3}
+.wrow .w span{color:var(--mute);font-size:15px}
+.know{flex:none;border:1px solid var(--line2);background:none;color:var(--mute);border-radius:99px;padding:3px 14px;cursor:pointer;font-size:13px}
+.know.on{background:var(--ok);border-color:var(--ok);color:#03160d}
+.flash{min-height:240px;display:grid;place-content:center;text-align:center;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid #60a5fa44;border-radius:24px;padding:30px;cursor:pointer;margin-bottom:16px;user-select:none}
+.flash b{font-size:34px;font-family:var(--latin);font-weight:700}
+.flash span{font-size:28px;color:var(--a)}
+.flash small{display:block;color:var(--mute);margin-top:12px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line2);color:var(--text);border-radius:14px;padding:13px 18px;margin-bottom:10px;font-size:17px;cursor:pointer}
+.opt:hover{border-color:var(--b)}
+.opt.ok{border-color:var(--ok);background:#34d39922}
+.opt.no{border-color:#ef4444;background:#ef444422}
+.qq{font-family:var(--latin);font-size:30px;font-weight:700;text-align:center;margin:10px 0 22px}
+.inp{width:100%;background:#00000040;border:1px solid var(--line2);border-radius:12px;padding:12px 16px;color:var(--text);font-size:16px;font-family:inherit;margin-bottom:10px;outline:none}
+.inp:focus{border-color:var(--a)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.cg{grid-template-columns:1fr}}
+.msg{margin-top:12px;font-size:15px;color:var(--mute)}
+.msg.ok{color:var(--ok)}.msg.bad{color:#f87171}
+.codebox{font-family:var(--latin);letter-spacing:.14em;font-weight:700;font-size:22px;color:var(--a);background:#5eead414;border:1px dashed #5eead466;border-radius:12px;padding:10px 16px;margin:10px 0;text-align:center}
+#cv{width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin-top:14px;display:none}
+.x-tag{font-size:11px;color:var(--c);border:1px solid #a78bfa55;border-radius:99px;padding:0 8px;margin-left:6px}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+  <a href="#top" class="logo">SPEAK<b>90</b></a>
+  <div class="links"><a href="#plan">৯০ দিন</a><a href="#grammar">গ্রামার</a><a href="#vocab">শব্দভান্ডার</a><a href="#cert">সার্টিফিকেট</a></div>
+  <span class="pill" id="streakPill">শুরু করো</span>
+</div></nav>
+
+<header class="wrap hero" id="top">
+  <div>
+    <div class="eyebrow">ENGLISH SPEAKING · GRAMMAR · ৯০ DAYS</div>
+    <h1>৯০ দিনে <span class="grad">ইংরেজিতে<br>কথা বলা</span></h1>
+    <p class="lead">গ্রামারসহ ধাপে ধাপে ৯০টা পাঠ। প্রতিদিন ১ ঘণ্টা: শোনো, বলো, রেকর্ড করো। কোনো খরচ নেই, শুধু ফোন আর নিয়মিত অভ্যাস।</p>
+    <div class="btns"><button class="btn p" id="goNow">আজকের পাঠ শুরু করো →</button><a class="btn g" href="#plan">৯০ দিনের পরিকল্পনা</a></div>
+    <div class="facts"><div><b class="grad">৯০</b><span>দিনের পাঠ</span></div><div><b class="grad">৩৬০+</b><span>বাক্য শুনে বলার</span></div><div><b class="grad">১ ঘণ্টা</b><span>প্রতিদিন</span></div></div>
+  </div>
+  <div class="ringCard">
+    <div class="ring"><svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="88" fill="none" stroke="#ffffff14" stroke-width="12"/><circle id="arc" cx="100" cy="100" r="88" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553" style="transition:stroke-dashoffset .8s"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs></svg>
+      <div class="mid"><b class="grad" id="pct">০%</b><span>সম্পন্ন</span></div></div>
+    <div class="row"><div><b id="cDone">০</b>শেষ</div><div><b id="cLeft">৯০</b>বাকি</div><div><b id="cStreak">০</b>দিনের ধারা</div></div>
+  </div>
+</header>
+
+<section id="how"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>প্রতিদিনের <span class="grad">১ ঘণ্টার রুটিন</span></h2><p>প্রতিটা পাঠে একই ছক। সময় ভাগ করে নিলে অভ্যাস গড়া সহজ।</p></div>
+  <div class="how">
+    <div><i>👂</i><b>১০ মিনিট</b><span>বাক্যগুলো শোনো (🔊 চাপো)</span></div>
+    <div><i>📘</i><b>১৫ মিনিট</b><span>গ্রামারের নিয়ম বোঝো</span></div>
+    <div><i>🗣️</i><b>১৫ মিনিট</b><span>জোরে জোরে বাক্য বলো</span></div>
+    <div><i>🎙️</i><b>১৫ মিনিট</b><span>আজকের কাজটা রেকর্ড করো</span></div>
+    <div><i>🔁</i><b>৫ মিনিট</b><span>রেকর্ডিং শুনে ভুল ধরো</span></div>
+  </div>
+  <div class="note">সত্যি কথা: ৯০ দিনে সবাই একরকম হয় না। প্রতিদিন নিয়ম মেনে জোরে বলে অনুশীলন করলে আত্মবিশ্বাসী ও গোছানো ইংরেজি বলা সম্ভব। ফল নির্ভর করে তোমার নিয়মিততার ওপর।</div>
+</div></section>
+
+<section id="plan"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>৯০ দিনের <span class="grad">পরিকল্পনা</span></h2><p>যেকোনো দিনে চাপ দিয়ে পাঠ খোলো। শেষ করলে সবুজ টিক পড়বে।</p></div>
+  <div id="weeks"></div>
+</div></section>
+
+<section id="grammar"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>গ্রামার <span class="grad">লাইব্রেরি</span></h2><p>যেকোনো নিয়ম বা শব্দ খুঁজে সেই পাঠে চলে যাও।</p></div>
+  <input class="search" id="q" placeholder="খুঁজুন: tense, should, if, can…" aria-label="খুঁজুন">
+  <div class="gl" id="gl"></div>
+</div></section>
+
+
+<section id="vocab"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>শব্দভান্ডার <span class="grad" id="vCount"></span></h2><p>টপিক ধরে শেখো। শোনো, ফ্ল্যাশকার্ডে মুখস্থ করো, কুইজে নিজেকে পরীক্ষা করো।</p></div>
+  <input class="search" id="vq" placeholder="যেকোনো ইংরেজি বা বাংলা শব্দ খুঁজুন…" aria-label="শব্দ খুঁজুন">
+  <div id="vres"></div>
+  <div class="vg" id="vg"></div>
+</div></section>
+
+<section id="cert"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>সার্টিফিকেট <span class="grad">নিন</span></h2><p>৯০টা পাঠ শেষ করলে আবেদন করতে পারবে। যাচাই করে অ্যাডমিন সার্টিফিকেট অনুমোদন করবেন।</p></div>
+  <div class="cg">
+    <div class="box" id="applyBox"></div>
+    <div class="box"><h4>🔎 আবেদনের অবস্থা ও সার্টিফিকেট</h4>
+      <p style="color:var(--mute);font-size:15px;margin-bottom:10px">আবেদনের সময় পাওয়া কোড লিখে দেখো। অন্য কারও সার্টিফিকেট যাচাই করতেও এই কোড লাগে।</p>
+      <input class="inp" id="codeIn" placeholder="যেমন S90-AB12CD34" autocapitalize="characters">
+      <button class="btn p" id="codeGo" style="width:100%">দেখো</button>
+      <div class="msg" id="codeMsg"></div></div>
+  </div>
+  <canvas id="cv" width="1600" height="1131"></canvas>
+  <div id="cvAct" style="display:none;margin-top:14px" class="fin"><button class="btn p" id="dlCert">সার্টিফিকেট ডাউনলোড (PNG)</button><button class="btn g" id="cpLink">যাচাইয়ের লিংক কপি</button></div>
+</div></section>
+
+<footer><div class="wrap">SPEAK90 · প্রতিদিন একটু একটু করে। তোমার অগ্রগতি শুধু এই ফোনের ব্রাউজারে সেভ থাকে।</div></footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true"><div class="obar"><button class="x" id="cl" aria-label="বন্ধ করুন">←</button><div class="ttl" id="ovt"></div></div><article class="lesson" id="les"></article></div>
+<div class="toast" id="toast"></div>
+
+<script src="lessons.js"></script>
+<script src="grammar_extra.js"></script>
+<script src="vocab.js"></script>
+<script>
+(function(){
+const L=window.LESSONS,GX=window.GRAMMAR_EXTRA||[],V=window.VOCAB||[],$=s=>document.querySelector(s);
+const ALL=L.concat(GX);
+const bn=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const WEEKS=['প্রথম ভিত্তি','প্রতিদিনের রুটিন','চারপাশের বর্ণনা','কেনাকাটা ও পরিমাণ','অতীতের গল্প','ভবিষ্যৎ ও অভিজ্ঞতা','পরামর্শ ও অনুরোধ','শর্ত ও তুলনা','জটিল বাক্য','বাক্য জোড়া ও বাস্তব পরিস্থিতি','ভ্রমণ, মত ও বর্ণনা','কথা বলার দক্ষতা','চূড়ান্ত অনুশীলন'];
+const K="AIzaSyD1uWle_USBMBO_rJuT64TMCmmzyO1rdH8",FB="https://firestore.googleapis.com/v1/projects/techcraft-gigs/databases/(default)/documents";
+let st={done:{},days:{},vl:{},code:''};
+try{const s=localStorage.getItem('speak90');if(s)st=Object.assign(st,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem('speak90',JSON.stringify(st))}catch(e){}}
+const today=()=>new Date().toISOString().slice(0,10);
+const doneN=()=>L.filter(l=>st.done[l.d]).length;
+function streak(){let n=0,d=new Date();for(;;){const k=d.toISOString().slice(0,10);if(st.days[k]){n++;d.setDate(d.getDate()-1)}else if(n===0&&k===today()){d.setDate(d.getDate()-1)}else break}return n}
+function cur(){for(const l of L)if(!st.done[l.d])return l.d;return L.length}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1900)}
+
+/* ---------- main paint ---------- */
+function paint(){
+  const n=doneN(),c=cur(),sk=streak();
+  $('#pct').textContent=bn(Math.round(n/L.length*100))+'%';
+  $('#arc').style.strokeDashoffset=553*(1-n/L.length);
+  $('#cDone').textContent=bn(n);$('#cLeft').textContent=bn(L.length-n);$('#cStreak').textContent=bn(sk);
+  $('#streakPill').textContent=sk?('🔥 '+bn(sk)+' দিনের ধারা'):'আজই শুরু করো';
+  $('#goNow').textContent=n===0?'আজকের পাঠ শুরু করো →':(n>=L.length?'আবার দেখো →':'দিন '+bn(c)+' চালিয়ে যাও →');
+  let h='';
+  for(let w=0;w<13;w++){
+    const a=w*7,b=Math.min(a+7,L.length),items=L.slice(a,b),dn=items.filter(x=>st.done[x.d]).length;
+    h+=`<div class="week"><div class="wh"><b>সপ্তাহ ${bn(w+1)}</b><span>${WEEKS[w]}</span><em>${bn(dn)}/${bn(items.length)}</em></div><div class="days">`
+     +items.map(x=>`<button class="day${st.done[x.d]?' done':''}${x.d===c?' now':''}" data-d="${x.d}"><span class="n">${st.done[x.d]?'✓':bn(x.d)}</span><span class="t">${esc(x.t)}</span></button>`).join('')+`</div></div>`;
+  }
+  $('#weeks').innerHTML=h;
+  drawG();drawV();drawApply();
+}
+function drawG(){
+  const q=$('#q').value.trim().toLowerCase();
+  const f=ALL.filter(l=>!q||(l.t+l.r+l.e.map(e=>e[0]+e[1]).join(' ')).toLowerCase().includes(q));
+  $('#gl').innerHTML=f.length?f.map(l=>`<div class="gi" data-d="${l.d}"><small>${l.x?'EXTRA':'DAY '+l.d}</small><b>${esc(l.t)}</b><span>${esc(l.r.slice(0,95))}${l.r.length>95?'…':''}</span></div>`).join(''):'<div style="color:var(--mute);padding:20px">কিছু পাওয়া যায়নি</div>';
+}
+
+/* ---------- speech & recording ---------- */
+function say(t,rate){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\s*\(.*?\)\s*$/,'').replace(/—/g,', ').replace(/ = /g,', '));u.lang='en-US';u.rate=rate||.85;
+  const v=speechSynthesis.getVoices().find(v=>/en[-_](US|GB)/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast('এই ব্রাউজারে শোনার সুবিধা নেই')}}
+let rec=null,chunks=[],stream=null;
+async function toggleRec(btn,audio){
+  if(rec&&rec.state==='recording'){rec.stop();return}
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];rec=new MediaRecorder(stream);
+    rec.ondataavailable=e=>chunks.push(e.data);
+    rec.onstop=()=>{audio.src=URL.createObjectURL(new Blob(chunks,{type:rec.mimeType||'audio/webm'}));audio.style.display='block';btn.classList.remove('on');btn.textContent='🎙️ আবার রেকর্ড করো';stream.getTracks().forEach(t=>t.stop())};
+    rec.start();btn.classList.add('on');btn.textContent='⏹ থামাও'
+  }catch(e){toast('মাইক্রোফোনের অনুমতি দিন')}
+}
+
+/* ---------- lesson overlay ---------- */
+function openOv(title){$('#ovt').textContent=title;const ov=$('#ov');ov.classList.add('open');ov.scrollTop=0;document.body.style.overflow='hidden'}
+function open(d){
+  const l=ALL.find(x=>x.d===d);if(!l)return;
+  const pool=l.x?GX:L,idx=pool.indexOf(l);
+  openOv((l.x?'বাড়তি গ্রামার · ':'দিন '+bn(d)+' · ')+l.t);
+  $('#les').innerHTML=`<div class="dn">${l.x?'EXTRA GRAMMAR '+(idx+1)+' / '+GX.length:'DAY '+d+' / '+L.length}</div><h2>${esc(l.t)}</h2>
+   <div class="box"><h4>📘 গ্রামারের নিয়ম</h4><p class="rule-t">${esc(l.r)}</p></div>
+   <div class="box"><h4>🔊 শোনো ও বলো (প্রতিটা ৩ বার)</h4>${l.e.map((e,i)=>`<div class="ex"><button class="sp" data-s="${i}" aria-label="শোনো">🔊</button><div><div class="en">${esc(e[0])}</div><div class="bn">${esc(e[1])}</div></div></div>`).join('')}
+     <button class="btn g" id="slow" style="margin-top:12px">ধীরে সবগুলো শোনো</button></div>
+   ${l.x?'':`<div class="box"><h4>⏱ আজকের রুটিন</h4><ul class="steps"><li><i>১০ মি</i>বাক্যগুলো শোনো</li><li><i>১৫ মি</i>নিয়মটা পড়ে বোঝো</li><li><i>১৫ মি</i>জোরে জোরে বলো</li><li><i>১৫ মি</i>নিচের কাজটা রেকর্ড করো</li><li><i>৫ মি</i>রেকর্ডিং শুনে ভুল ধরো</li></ul></div>`}
+   <div class="box task"><h4>🎯 ${l.x?'অনুশীলন':'আজকের বলার কাজ'}</h4><p class="rule-t">${esc(l.k)}</p>
+     <div class="rec"><button class="btn g recbtn" id="rb">🎙️ রেকর্ড করো</button><audio id="au" controls style="display:none"></audio></div></div>
+   <div class="fin"><button class="btn g" id="pv" ${idx===0?'disabled style="opacity:.4"':''}>← আগের</button>
+     <button class="btn p done-btn${st.done[d]?' is':''}" id="dn">${st.done[d]?'✓ শেষ হয়েছে':(l.x?'পড়া শেষ':'আজকের পাঠ শেষ করলাম')}</button>
+     <button class="btn g" id="nx" ${idx===pool.length-1?'disabled style="opacity:.4"':''}>পরের →</button></div>`;
+  $('#les').querySelectorAll('.sp').forEach(b=>b.onclick=()=>say(l.e[+b.dataset.s][0]));
+  $('#slow').onclick=()=>{try{speechSynthesis.cancel();l.e.forEach(e=>{const u=new SpeechSynthesisUtterance(e[0]);u.lang='en-US';u.rate=.65;speechSynthesis.speak(u)})}catch(x){}};
+  $('#rb').onclick=()=>toggleRec($('#rb'),$('#au'));
+  $('#dn').onclick=()=>{if(!st.done[d]){st.done[d]=1;if(!l.x)st.days[today()]=1;save();paint();toast(l.x?'মাশাআল্লাহ!':'মাশাআল্লাহ! দিন '+bn(d)+' শেষ')}
+    $('#dn').classList.add('is');$('#dn').textContent='✓ শেষ হয়েছে'};
+  $('#pv').onclick=()=>open(pool[idx-1].d);$('#nx').onclick=()=>open(pool[idx+1].d);
+}
+function close(){$('#ov').classList.remove('open');document.body.style.overflow='';try{speechSynthesis.cancel()}catch(e){}paint()}
+
+/* ---------- vocabulary ---------- */
+const vk=(ti,wi)=>ti+':'+wi;
+const totalW=V.reduce((a,t)=>a+t.w.length,0);
+$('#vCount').textContent='('+bn(totalW)+'+ শব্দ)';
+function drawV(){
+  $('#vg').innerHTML=V.map((t,ti)=>{const k=t.w.filter((_,wi)=>st.vl[vk(ti,wi)]).length;
+    return `<button class="vt" data-t="${ti}"><i>${t.i}</i><b>${esc(t.n)}</b><span>${bn(t.w.length)}টা শব্দ · ${bn(k)} জানা</span><div class="bar"><div style="width:${k/t.w.length*100}%"></div></div></button>`}).join('');
+}
+$('#vq').oninput=e=>{
+  const q=e.target.value.trim().toLowerCase();
+  if(!q){$('#vres').innerHTML='';return}
+  const r=[];V.forEach((t,ti)=>t.w.forEach((w,wi)=>{if((w[0]+' '+w[1]).toLowerCase().includes(q)&&r.length<60)r.push([w,ti])}));
+  $('#vres').innerHTML=`<div class="box" style="margin-bottom:18px">${r.length?r.map((x,i)=>`<div class="wrow"><button class="sp" data-say="${esc(x[0][0])}">🔊</button><div class="w"><b>${esc(x[0][0])}</b><span>${esc(x[0][1])} · ${esc(V[x[1]].n)}</span></div></div>`).join(''):'<div style="color:var(--mute)">কিছু পাওয়া যায়নি</div>'}</div>`;
+};
+$('#vres').onclick=e=>{const b=e.target.closest('[data-say]');if(b)say(b.dataset.say)};
+
+let vm={ti:0,mode:'list',fi:0,flip:false,qs:[],qi:0,score:0,ans:false};
+function openVocab(ti,mode){
+  vm.ti=ti;vm.mode=mode||'list';
+  const T=V[ti];openOv(T.i+' '+T.n);
+  if(vm.mode==='flash'){vm.fi=0;vm.flip=false;vm.order=T.w.map((_,i)=>i).sort(()=>Math.random()-.5)}
+  if(vm.mode==='quiz'){const idx=T.w.map((_,i)=>i).sort(()=>Math.random()-.5).slice(0,10);vm.qs=idx;vm.qi=0;vm.score=0;vm.ans=false}
+  renderV();
+}
+function renderV(){
+  const T=V[vm.ti],k=T.w.filter((_,wi)=>st.vl[vk(vm.ti,wi)]).length;
+  let h=`<div class="dn">VOCABULARY · ${bn(T.w.length)}টা শব্দ</div><h2>${T.i} ${esc(T.n)}</h2>
+   <div class="tabs"><button class="tab${vm.mode==='list'?' on':''}" data-m="list">📋 তালিকা</button><button class="tab${vm.mode==='flash'?' on':''}" data-m="flash">🃏 ফ্ল্যাশকার্ড</button><button class="tab${vm.mode==='quiz'?' on':''}" data-m="quiz">❓ কুইজ</button></div>`;
+  if(vm.mode==='list'){
+    h+=`<div class="box"><div style="color:var(--mute);font-size:14px;margin-bottom:6px">${bn(k)}/${bn(T.w.length)} শব্দ জানা হয়েছে। 🔊 চেপে উচ্চারণ শোনো।</div>`
+     +T.w.map((w,wi)=>`<div class="wrow"><button class="sp" data-say="${esc(w[0])}">🔊</button><div class="w"><b>${esc(w[0])}</b><span>${esc(w[1])}</span></div><button class="know${st.vl[vk(vm.ti,wi)]?' on':''}" data-k="${wi}">${st.vl[vk(vm.ti,wi)]?'✓ জানি':'জানি?'}</button></div>`).join('')+`</div>`;
+  }else if(vm.mode==='flash'){
+    const wi=vm.order[vm.fi],w=T.w[wi];
+    h+=`<div style="color:var(--mute);font-size:14px;margin-bottom:8px;text-align:center">${bn(vm.fi+1)} / ${bn(T.w.length)} · কার্ড চাপলে অর্থ দেখা যাবে</div>
+     <div class="flash" id="fc">${vm.flip?`<span>${esc(w[1])}</span><small>${esc(w[0])}</small>`:`<b>${esc(w[0])}</b><small>🔊 শোনার জন্য নিচের বোতাম চাপো</small>`}</div>
+     <div class="fin"><button class="btn g" id="fs">🔊 শোনো</button><button class="btn g" id="fa">আবার দেখবো</button><button class="btn p" id="fk">জানি ✓</button></div>`;
+  }else{
+    if(vm.qi>=vm.qs.length){
+      h+=`<div class="box" style="text-align:center"><h4>ফলাফল</h4><div style="font-size:48px;font-family:var(--serif)" class="grad">${bn(vm.score)}/${bn(vm.qs.length)}</div><p style="color:var(--mute);margin:8px 0 18px">${vm.score>=vm.qs.length*0.8?'চমৎকার! মাশাআল্লাহ।':'আবার চেষ্টা করলে আরও ভালো হবে।'}</p><button class="btn p" id="qr">আবার কুইজ দাও</button></div>`;
+    }else{
+      const wi=vm.qs[vm.qi],w=T.w[wi];
+      const pool=[];V.forEach(t=>t.w.forEach(x=>{if(x[1]!==w[1])pool.push(x[1])}));
+      if(!vm.opts||vm.optFor!==vm.qi){const o=[w[1]];while(o.length<4){const c=pool[Math.floor(Math.random()*pool.length)];if(!o.includes(c))o.push(c)}vm.opts=o.sort(()=>Math.random()-.5);vm.optFor=vm.qi}
+      h+=`<div style="color:var(--mute);font-size:14px;text-align:center">প্রশ্ন ${bn(vm.qi+1)} / ${bn(vm.qs.length)}</div><div class="qq">${esc(w[0])} <button class="sp" style="width:38px;height:38px;border-radius:50%;border:1px solid #5eead466;background:#5eead414;color:var(--a);cursor:pointer;vertical-align:middle" data-say="${esc(w[0])}">🔊</button></div>`
+       +vm.opts.map(o=>`<button class="opt" data-o="${esc(o)}">${esc(o)}</button>`).join('');
+    }
+  }
+  $('#les').innerHTML=h;
+}
+$('#les').addEventListener('click',e=>{
+  if(vm.ti==null||!$('#ovt').textContent.includes(V[vm.ti]&&V[vm.ti].n||'§'))return;
+  const T=V[vm.ti];
+  let b;
+  if(b=e.target.closest('.tab')){openVocab(vm.ti,b.dataset.m);return}
+  if(b=e.target.closest('[data-say]')){say(b.dataset.say);return}
+  if(b=e.target.closest('[data-k]')){const key=vk(vm.ti,+b.dataset.k);st.vl[key]=st.vl[key]?0:1;save();renderV();return}
+  if(e.target.closest('#fc')){vm.flip=!vm.flip;renderV();return}
+  if(e.target.closest('#fs')){say(T.w[vm.order[vm.fi]][0]);return}
+  if(e.target.closest('#fa')||e.target.closest('#fk')){
+    if(e.target.closest('#fk')){st.vl[vk(vm.ti,vm.order[vm.fi])]=1;save()}
+    vm.fi=(vm.fi+1)%T.w.length;vm.flip=false;renderV();return}
+  if(b=e.target.closest('.opt')){
+    if(vm.ans)return;vm.ans=true;const w=T.w[vm.qs[vm.qi]],ok=b.dataset.o===w[1];
+    if(ok)vm.score++;
+    document.querySelectorAll('.opt').forEach(x=>{if(x.dataset.o===w[1])x.classList.add('ok');else if(x===b)x.classList.add('no')});
+    setTimeout(()=>{vm.qi++;vm.ans=false;renderV()},ok?650:1300);return}
+  if(e.target.closest('#qr')){openVocab(vm.ti,'quiz')}
+});
+$('#vg').onclick=e=>{const b=e.target.closest('.vt');if(b)openVocab(+b.dataset.t,'list')};
+
+/* ---------- certificate ---------- */
+const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function newCode(){const a=new Uint8Array(8);crypto.getRandomValues(a);return 'S90-'+[...a].map(x=>chars[x%chars.length]).join('')}
+function fs(v){return {stringValue:String(v)}}
+function parseDoc(j){const f=j.fields||{};const o={};for(const k in f){const v=f[k];o[k]=v.stringValue!==undefined?v.stringValue:(v.integerValue!==undefined?+v.integerValue:'')}return o}
+function drawApply(){
+  const b=$('#applyBox');if(!b)return;
+  const n=doneN();
+  if(st.code){
+    b.innerHTML=`<h4>📨 তোমার আবেদন</h4><p style="color:var(--mute);font-size:15px">তুমি আবেদন করেছো। এই কোডটা সংরক্ষণ করো:</p><div class="codebox">${esc(st.code)}</div><button class="btn g" id="seeMine" style="width:100%">অবস্থা দেখো</button>`;
+    $('#seeMine').onclick=()=>{$('#codeIn').value=st.code;checkCode(st.code)};return}
+  if(n<L.length){
+    b.innerHTML=`<h4>🔒 আবেদন এখনো খোলা নয়</h4><p style="color:var(--mute);font-size:15px">সার্টিফিকেটের আবেদনের জন্য ৯০টা পাঠ শেষ করতে হবে। এখন শেষ হয়েছে ${bn(n)}/${bn(L.length)}।</p><div class="bar"><div style="width:${n/L.length*100}%"></div></div>`;return}
+  b.innerHTML=`<h4>🎓 সার্টিফিকেটের আবেদন</h4><p style="color:var(--mute);font-size:15px;margin-bottom:10px">মাশাআল্লাহ! ৯০টা পাঠ শেষ। সার্টিফিকেটে যে নাম লেখা হবে সেটা সঠিকভাবে লেখো।</p>
+   <input class="inp" id="aName" placeholder="পুরো নাম (সার্টিফিকেটে যেভাবে চাও)" maxlength="60"><input class="inp" id="aPh" placeholder="মোবাইল/WhatsApp নম্বর" inputmode="tel" maxlength="20">
+   <button class="btn p" id="aGo" style="width:100%">আবেদন করো</button><div class="msg" id="aMsg"></div>`;
+  $('#aGo').onclick=async()=>{
+    const name=$('#aName').value.trim(),ph=$('#aPh').value.trim(),m=$('#aMsg');
+    if(name.length<2){m.className='msg bad';m.textContent='নাম লিখুন';return}
+    if(ph.replace(/\D/g,'').length<10){m.className='msg bad';m.textContent='সঠিক নম্বর দিন';return}
+    const code=newCode();m.className='msg';m.textContent='পাঠানো হচ্ছে…';
+    try{
+      const r=await fetch(FB+'/sp_cert?documentId='+code+'&key='+K,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:{code:fs(code),name:fs(name),phone:fs(ph),done:{integerValue:String(n)},status:fs('pending'),at:{integerValue:String(Date.now())}}})});
+      if(!r.ok)throw 0;st.code=code;save();drawApply();toast('আবেদন পাঠানো হয়েছে')
+    }catch(e){m.className='msg bad';m.textContent='পাঠানো যায়নি, ইন্টারনেট দেখে আবার চেষ্টা করুন'}
+  };
+}
+async function checkCode(code){
+  const m=$('#codeMsg');code=(code||'').trim().toUpperCase();$('#cv').style.display='none';$('#cvAct').style.display='none';
+  if(!/^S90-[A-Z0-9]{8}$/.test(code)){m.className='msg bad';m.textContent='কোডটা ঠিক নয়। S90- দিয়ে শুরু হবে।';return}
+  m.className='msg';m.textContent='দেখা হচ্ছে…';
+  try{
+    const r=await fetch(FB+'/sp_cert/'+code+'?key='+K);
+    if(r.status===404){m.className='msg bad';m.textContent='এই কোডে কোনো আবেদন পাওয়া যায়নি।';return}
+    if(!r.ok)throw 0;
+    const d=parseDoc(await r.json());
+    if(d.status==='approved'){m.className='msg ok';m.textContent='✓ সার্টিফিকেট অনুমোদিত। এটি আসল ও যাচাইকৃত।';await drawCert(d);$('#cv').style.display='block';$('#cvAct').style.display='flex';window._cd=d}
+    else if(d.status==='rejected'){m.className='msg bad';m.textContent='দুঃখিত, আবেদনটি অনুমোদিত হয়নি। বিস্তারিত জানতে অ্যাডমিনের সাথে যোগাযোগ করুন।'}
+    else{m.className='msg';m.textContent='⏳ আবেদনটি অ্যাডমিনের যাচাইয়ের অপেক্ষায় আছে। একটু পরে আবার দেখো।'}
+  }catch(e){m.className='msg bad';m.textContent='এখন দেখা যাচ্ছে না, আবার চেষ্টা করুন'}
+}
+async function drawCert(d){
+  try{await document.fonts.load('700 60px "Hind Siliguri"');await document.fonts.load('800 60px "Noto Serif Bengali"');await document.fonts.load('700 30px Montserrat')}catch(e){}
+  const c=$('#cv'),x=c.getContext('2d'),W=1600,H=1131;
+  const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#060b1a');g.addColorStop(1,'#0b1330');x.fillStyle=g;x.fillRect(0,0,W,H);
+  const r=x.createRadialGradient(W/2,H/2,100,W/2,H/2,900);r.addColorStop(0,'#5eead41a');r.addColorStop(1,'transparent');x.fillStyle=r;x.fillRect(0,0,W,H);
+  const gold=x.createLinearGradient(0,0,W,0);gold.addColorStop(0,'#5eead4');gold.addColorStop(.5,'#60a5fa');gold.addColorStop(1,'#a78bfa');
+  x.strokeStyle=gold;x.lineWidth=5;x.strokeRect(40,40,W-80,H-80);x.lineWidth=1.5;x.strokeRect(62,62,W-124,H-124);
+  x.textAlign='center';
+  x.fillStyle='#5eead4';x.font='700 26px Montserrat, sans-serif';x.letterSpacing='10px';x.fillText('SPEAK90',W/2,150);x.letterSpacing='0px';
+  x.fillStyle='#e9edf7';x.font='700 66px "Noto Serif Bengali", Montserrat, serif';x.fillText('CERTIFICATE',W/2,265);
+  x.font='600 26px Montserrat, sans-serif';x.fillStyle='#98a1b8';x.letterSpacing='8px';x.fillText('OF COMPLETION',W/2,315);x.letterSpacing='0px';
+  x.font='400 28px "Hind Siliguri", sans-serif';x.fillStyle='#98a1b8';x.fillText('This is proudly presented to',W/2,420);
+  let fz=96;x.font='800 '+fz+'px "Noto Serif Bengali","Hind Siliguri",serif';
+  while(x.measureText(d.name).width>1180&&fz>40){fz-=4;x.font='800 '+fz+'px "Noto Serif Bengali","Hind Siliguri",serif'}
+  x.fillStyle=gold;x.fillText(d.name,W/2,545);
+  x.strokeStyle='#ffffff30';x.lineWidth=2;x.beginPath();x.moveTo(380,585);x.lineTo(W-380,585);x.stroke();
+  x.fillStyle='#e9edf7';x.font='400 31px "Hind Siliguri", sans-serif';
+  x.fillText('for successfully completing the 90-Day English Speaking',W/2,665);
+  x.fillText('& Grammar Course with regular practice and dedication.',W/2,712);
+  const dt=new Date(+d.issuedAt||+d.at||Date.now()).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  x.textAlign='left';x.font='600 22px Montserrat, sans-serif';x.fillStyle='#98a1b8';
+  x.fillText('DATE',160,930);x.fillText('CERTIFICATE NO.',W-520,930);
+  x.fillStyle='#e9edf7';x.font='600 30px "Hind Siliguri", sans-serif';x.fillText(dt,160,975);x.fillText(d.no||d.code,W-520,975);
+  x.fillStyle='#98a1b8';x.font='400 20px Montserrat, sans-serif';x.fillText('Verify: code '+d.code,160,1030);
+  x.textAlign='center';x.fillStyle='#5eead4';x.font='700 24px Montserrat, sans-serif';x.fillText('✦',W/2,960);
+  x.fillStyle='#98a1b8';x.font='400 18px "Hind Siliguri", sans-serif';x.fillText('SPEAK90 · যাচাই করতে সাইটে কোড দিন',W/2,1030);
+}
+$('#codeGo').onclick=()=>checkCode($('#codeIn').value);
+$('#codeIn').onkeydown=e=>{if(e.key==='Enter')checkCode(e.target.value)};
+$('#dlCert').onclick=()=>{const a=document.createElement('a');a.download='SPEAK90-certificate-'+(window._cd&&window._cd.code||'')+'.png';a.href=$('#cv').toDataURL('image/png');a.click()};
+$('#cpLink').onclick=()=>{const u=location.origin+location.pathname+'?c='+(window._cd&&window._cd.code||'');try{navigator.clipboard.writeText(u);toast('লিংক কপি হয়েছে')}catch(e){toast(u)}};
+
+/* ---------- wiring ---------- */
+$('#cl').onclick=close;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+$('#weeks').onclick=e=>{const b=e.target.closest('.day');if(b)open(+b.dataset.d)};
+$('#gl').onclick=e=>{const b=e.target.closest('.gi');if(b)open(+b.dataset.d)};
+$('#q').oninput=drawG;
+$('#goNow').onclick=()=>open(cur());
+try{speechSynthesis.getVoices()}catch(e){}
+paint();
+const qp=new URLSearchParams(location.search).get('c');
+if(qp){$('#codeIn').value=qp.toUpperCase();setTimeout(()=>{$('#cert').scrollIntoView();checkCode(qp)},400)}
+else if(st.code){$('#codeIn').value=st.code}
+})();
+</script>
+</body>
+</html>

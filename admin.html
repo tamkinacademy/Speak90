@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SPEAK90 · অ্যাডমিন</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060912;--card:#0f1424;--line:#ffffff14;--line2:#ffffff26;--text:#e9edf7;--mute:#98a1b8;--a:#5eead4;--b:#60a5fa;--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Hind Siliguri',sans-serif;font-size:16px;line-height:1.6;min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding:20px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.logo{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:.12em}.logo b{color:var(--a)}
+button,input{font-family:inherit}
+.btn{border:0;cursor:pointer;border-radius:99px;padding:8px 18px;font-weight:600;font-size:14px;background:linear-gradient(120deg,var(--a),var(--b));color:#04121a}
+.btn.g{background:none;border:1px solid var(--line2);color:var(--text)}
+.btn.ok{background:var(--ok)}.btn.bad{background:none;border:1px solid var(--bad);color:var(--bad)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.inp{width:100%;background:#00000040;border:1px solid var(--line2);border-radius:12px;padding:11px 14px;color:var(--text);font-size:16px;margin-bottom:10px;outline:none}
+.inp:focus{border-color:var(--a)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:6px 16px;border-radius:99px;border:1px solid var(--line2);background:none;color:var(--mute);cursor:pointer;font-size:14px}
+.tab.on{border-color:var(--a);color:var(--a);background:#5eead414}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.meta{color:var(--mute);font-size:14px}
+.code{font-family:'Montserrat',sans-serif;letter-spacing:.1em;color:var(--a);font-weight:700}
+.tag{font-size:12px;border-radius:99px;padding:1px 10px;border:1px solid}
+.tag.pending{color:var(--warn);border-color:#fbbf2466}.tag.approved{color:var(--ok);border-color:#34d39966}.tag.rejected{color:var(--bad);border-color:#f8717166}
+.login{max-width:380px;margin:12vh auto}
+.msg{color:var(--bad);font-size:14px;margin-top:8px}
+h3{font-size:18px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import{getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,collection,getDocs}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+const app=initializeApp({apiKey:"AIzaSyD1uWle_USBMBO_rJuT64TMCmmzyO1rdH8",authDomain:"techcraft-gigs.firebaseapp.com",projectId:"techcraft-gigs",storageBucket:"techcraft-gigs.firebasestorage.app",messagingSenderId:"402779044950",appId:"1:402779044950:web:f728c347d9d23d18b48ff7"}),auth=getAuth(app),db=getFirestore(app);
+const $=s=>document.querySelector(s),A=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const newCode=()=>{const a=new Uint8Array(8);crypto.getRandomValues(a);return 'S90-'+[...a].map(x=>chars[x%chars.length]).join('')};
+let rows=[],tab='pending';
+
+function login(m){
+  A.innerHTML=`<div class="card login"><div class="logo" style="margin-bottom:14px">SPEAK<b>90</b> · অ্যাডমিন</div>
+   <input class="inp" id="e" type="email" placeholder="ইমেইল" autocomplete="username"><input class="inp" id="p" type="password" placeholder="পাসওয়ার্ড" autocomplete="current-password">
+   <button class="btn" id="g" style="width:100%">লগইন</button><div class="msg" id="m">${esc(m||'')}</div></div>`;
+  $('#g').onclick=async()=>{try{await signInWithEmailAndPassword(auth,$('#e').value.trim(),$('#p').value)}catch(e){$('#m').textContent='ইমেইল বা পাসওয়ার্ড ভুল'}};
+}
+async function load(){
+  const s=await getDocs(collection(db,'sp_cert'));rows=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.at||0)-(a.at||0));draw();
+}
+function fmt(ms){return ms?new Date(+ms).toLocaleString('bn-BD',{dateStyle:'medium',timeStyle:'short'}):''}
+function draw(){
+  const cnt=s=>rows.filter(r=>r.status===s).length;
+  const list=rows.filter(r=>r.status===tab);
+  A.innerHTML=`<div class="top"><div class="logo">SPEAK<b>90</b> · অ্যাডমিন</div><button class="btn g" id="lo">লগআউট</button></div>
+   <div class="tabs">${[['pending','অপেক্ষায়'],['approved','অনুমোদিত'],['rejected','বাতিল']].map(([k,n])=>`<button class="tab${tab===k?' on':''}" data-t="${k}">${n} (${cnt(k)})</button>`).join('')}</div>
+   <div class="card"><h3>➕ সরাসরি সার্টিফিকেট দাও</h3><input class="inp" id="nn" placeholder="নাম"><input class="inp" id="np" placeholder="মোবাইল (ঐচ্ছিক)"><button class="btn" id="ng">সার্টিফিকেট তৈরি করো</button><div class="meta" id="nm" style="margin-top:8px"></div></div>
+   ${list.length?list.map(r=>`<div class="card" data-id="${esc(r.id)}">
+     <div class="row" style="margin-top:0"><span class="code">${esc(r.code||r.id)}</span><span class="tag ${esc(r.status)}">${r.status==='pending'?'অপেক্ষায়':r.status==='approved'?'অনুমোদিত':'বাতিল'}</span><span class="meta">${fmt(r.at)}</span></div>
+     <input class="inp nm" value="${esc(r.name)}" style="margin-top:10px" aria-label="নাম">
+     <div class="meta">📞 ${esc(r.phone)} · পাঠ শেষ: ${esc(r.done)}/৯০${r.no?' · নং '+esc(r.no):''}</div>
+     <div class="row">
+       ${r.status!=='approved'?'<button class="btn ok" data-a="ok">✓ অনুমোদন</button>':''}
+       ${r.status==='pending'?'<button class="btn bad" data-a="no">✕ বাতিল</button>':''}
+       <a class="btn g" style="text-decoration:none" target="_blank" href="index.html?c=${esc(r.code||r.id)}">সার্টিফিকেট দেখো</a>
+       ${r.phone?`<a class="btn g" style="text-decoration:none" target="_blank" href="https://wa.me/88${esc(String(r.phone).replace(/\D/g,'').replace(/^88/,''))}?text=${encodeURIComponent('আপনার SPEAK90 সার্টিফিকেট প্রস্তুত। কোড: '+(r.code||r.id))}">WhatsApp</a>`:''}
+       <button class="btn g" data-a="del">মুছো</button></div></div>`).join(''):'<div class="meta" style="padding:24px;text-align:center">কিছু নেই</div>'}`;
+  $('#lo').onclick=()=>signOut(auth);
+  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.t;draw()});
+  $('#ng').onclick=async()=>{
+    const name=$('#nn').value.trim(),ph=$('#np').value.trim();if(name.length<2){$('#nm').textContent='নাম লিখুন';return}
+    const code=newCode(),no='S90-'+String(rows.filter(r=>r.status==='approved').length+1).padStart(4,'0');
+    await setDoc(doc(db,'sp_cert',code),{code,name,phone:ph,done:90,status:'approved',at:Date.now(),issuedAt:Date.now(),no});
+    $('#nm').textContent='তৈরি হয়েছে। কোড: '+code;await load();tab='approved';draw();
+  };
+  document.querySelectorAll('[data-a]').forEach(b=>b.onclick=async()=>{
+    const card=b.closest('.card'),id=card.dataset.id,name=card.querySelector('.nm').value.trim(),a=b.dataset.a;
+    if(a==='del'){if(!confirm('মুছে ফেলবে?'))return;await deleteDoc(doc(db,'sp_cert',id))}
+    else if(a==='ok'){const no='S90-'+String(rows.filter(r=>r.status==='approved').length+1).padStart(4,'0');await updateDoc(doc(db,'sp_cert',id),{status:'approved',name,issuedAt:Date.now(),no})}
+    else if(a==='no'){await updateDoc(doc(db,'sp_cert',id),{status:'rejected',name})}
+    await load();
+  });
+}
+onAuthStateChanged(auth,async u=>{
+  if(!u)return login();
+  let ok=false;try{ok=(await getDoc(doc(db,'admins',u.uid))).exists()}catch(e){}
+  if(!ok){await signOut(auth);return login('এই অ্যাকাউন্টে অ্যাডমিনের অনুমতি নেই')}
+  try{await load()}catch(e){A.innerHTML='<div class="card">ডেটা আনা যায়নি। Firebase Rules-এ sp_cert অংশটা বসানো হয়েছে কি না দেখো।</div>'}
+});
+</script>
+</body>
+</html>
