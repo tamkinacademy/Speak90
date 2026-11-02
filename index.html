@@ -162,12 +162,28 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--mute);fo
 .codebox{font-family:var(--latin);letter-spacing:.14em;font-weight:700;font-size:22px;color:var(--a);background:#5eead414;border:1px dashed #5eead466;border-radius:12px;padding:10px 16px;margin:10px 0;text-align:center}
 #cv{width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin-top:14px;display:none}
 .x-tag{font-size:11px;color:var(--c);border:1px solid #a78bfa55;border-radius:99px;padding:0 8px;margin-left:6px}
+.ex-card{background:linear-gradient(160deg,#151b30,var(--card));border:1px solid var(--line);border-radius:22px;padding:24px;margin-bottom:16px}
+.ex-card h3{font-family:var(--serif);font-size:24px;line-height:1.35;margin-bottom:6px}
+.ex-meta{display:flex;gap:8px 18px;flex-wrap:wrap;color:var(--mute);font-size:14px;margin:8px 0 14px}
+.ex-prize{background:#fbbf2412;border:1px solid #fbbf2444;border-radius:14px;padding:12px 16px;margin-bottom:14px;color:#fde68a;font-size:15px}
+.st{font-size:12px;border-radius:99px;padding:1px 12px;border:1px solid;margin-left:8px;vertical-align:middle}
+.st.up{color:var(--warn);border-color:#fbbf2466}.st.run{color:var(--ok);border-color:#34d39966}.st.end{color:var(--mute);border-color:var(--line2)}
+.lb{width:100%;border-collapse:collapse;margin-top:6px}
+.lb td,.lb th{padding:9px 8px;text-align:left;border-top:1px solid var(--line);font-size:15px}
+.lb th{color:var(--mute);font-weight:500;font-size:13px;border-top:0}
+.lb .me td{background:#5eead414}
+.timer{font-family:var(--latin);font-weight:700;font-size:20px;color:var(--a)}
+.timer.low{color:#f87171}
+.qno{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--mute);font-size:14px}
+.opt.sel{border-color:var(--a);background:#5eead41a}
+.rev{border-top:1px solid var(--line);padding:12px 0;font-size:15px}
+.rev b{display:block}.rev .g{color:var(--ok)}.rev .r{color:#f87171}
 </style>
 </head>
 <body>
 <nav><div class="wrap nav">
   <a href="#top" class="logo">SPEAK<b>90</b></a>
-  <div class="links"><a href="#plan">৯০ দিন</a><a href="#grammar">গ্রামার</a><a href="#vocab">শব্দভান্ডার</a><a href="#cert">সার্টিফিকেট</a></div>
+  <div class="links"><a href="#plan">৯০ দিন</a><a href="#grammar">গ্রামার</a><a href="#vocab">শব্দভান্ডার</a><a href="#exam">পরীক্ষা</a><a href="#cert">সার্টিফিকেট</a></div>
   <span class="pill" id="streakPill">শুরু করো</span>
 </div></nav>
 
@@ -217,6 +233,15 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--mute);fo
   <div class="vg" id="vg"></div>
 </div></section>
 
+
+<section id="exam"><div class="wrap">
+  <div class="sh"><div class="rule"></div><h2>পরীক্ষা ও <span class="grad">পুরস্কার</span></h2><p>পড়ার পর নিজেকে যাচাই করো। নির্ধারিত নম্বর পেলে পুরস্কার ও মেধা সার্টিফিকেট।</p></div>
+  <div id="examList"><div class="box" style="color:var(--mute)">পরীক্ষার তালিকা আনা হচ্ছে…</div></div>
+  <div class="box"><h4>📄 আমার ফলাফল দেখো</h4>
+    <div class="cg"><div><select class="inp" id="rEx"></select></div><div><input class="inp" id="rPh" placeholder="পরীক্ষায় যে নম্বর দিয়েছিলে" inputmode="tel"></div></div>
+    <button class="btn p" id="rGo" style="width:100%">ফলাফল দেখো</button><div id="rOut" class="msg"></div></div>
+</div></section>
+
 <section id="cert"><div class="wrap">
   <div class="sh"><div class="rule"></div><h2>সার্টিফিকেট <span class="grad">নিন</span></h2><p>৯০টা পাঠ শেষ করলে আবেদন করতে পারবে। যাচাই করে অ্যাডমিন সার্টিফিকেট অনুমোদন করবেন।</p></div>
   <div class="cg">
@@ -239,6 +264,8 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--mute);fo
 <script src="lessons.js"></script>
 <script src="grammar_extra.js"></script>
 <script src="vocab.js"></script>
+<script src="qbank.js"></script>
+<script src="exam.js"></script>
 <script>
 (function(){
 const L=window.LESSONS,GX=window.GRAMMAR_EXTRA||[],V=window.VOCAB||[],$=s=>document.querySelector(s);
@@ -391,7 +418,7 @@ $('#vg').onclick=e=>{const b=e.target.closest('.vt');if(b)openVocab(+b.dataset.t
 const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 function newCode(){const a=new Uint8Array(8);crypto.getRandomValues(a);return 'S90-'+[...a].map(x=>chars[x%chars.length]).join('')}
 function fs(v){return {stringValue:String(v)}}
-function parseDoc(j){const f=j.fields||{};const o={};for(const k in f){const v=f[k];o[k]=v.stringValue!==undefined?v.stringValue:(v.integerValue!==undefined?+v.integerValue:'')}return o}
+function parseDoc(j){const f=j.fields||{};const o={};for(const k in f){const v=f[k];o[k]=v.stringValue!==undefined?v.stringValue:(v.integerValue!==undefined?+v.integerValue:(v.booleanValue!==undefined?v.booleanValue:''))}return o}
 function drawApply(){
   const b=$('#applyBox');if(!b)return;
   const n=doneN();
@@ -438,15 +465,21 @@ async function drawCert(d){
   x.textAlign='center';
   x.fillStyle='#5eead4';x.font='700 26px Montserrat, sans-serif';x.letterSpacing='10px';x.fillText('SPEAK90',W/2,150);x.letterSpacing='0px';
   x.fillStyle='#e9edf7';x.font='700 66px "Noto Serif Bengali", Montserrat, serif';x.fillText('CERTIFICATE',W/2,265);
-  x.font='600 26px Montserrat, sans-serif';x.fillStyle='#98a1b8';x.letterSpacing='8px';x.fillText('OF COMPLETION',W/2,315);x.letterSpacing='0px';
+  x.font='600 26px Montserrat, sans-serif';x.fillStyle='#98a1b8';x.letterSpacing='8px';x.fillText((d.type==='merit'?'OF MERIT':'OF COMPLETION'),W/2,315);x.letterSpacing='0px';
   x.font='400 28px "Hind Siliguri", sans-serif';x.fillStyle='#98a1b8';x.fillText('This is proudly presented to',W/2,420);
   let fz=96;x.font='800 '+fz+'px "Noto Serif Bengali","Hind Siliguri",serif';
   while(x.measureText(d.name).width>1180&&fz>40){fz-=4;x.font='800 '+fz+'px "Noto Serif Bengali","Hind Siliguri",serif'}
   x.fillStyle=gold;x.fillText(d.name,W/2,545);
   x.strokeStyle='#ffffff30';x.lineWidth=2;x.beginPath();x.moveTo(380,585);x.lineTo(W-380,585);x.stroke();
   x.fillStyle='#e9edf7';x.font='400 31px "Hind Siliguri", sans-serif';
+  if(d.type==='merit'){
+    x.fillText('for outstanding performance in',W/2,655);
+    x.font='700 36px "Hind Siliguri", sans-serif';x.fillStyle='#5eead4';x.fillText(d.title||'SPEAK90 Exam',W/2,712);
+    x.font='600 30px Montserrat, sans-serif';x.fillStyle='#e9edf7';
+    x.fillText('Score '+d.score+' / '+d.total+(d.rank?'   ·   Rank '+d.rank:''),W/2,775);
+  }else{
   x.fillText('for successfully completing the 90-Day English Speaking',W/2,665);
-  x.fillText('& Grammar Course with regular practice and dedication.',W/2,712);
+  x.fillText('& Grammar Course with regular practice and dedication.',W/2,712);}
   const dt=new Date(+d.issuedAt||+d.at||Date.now()).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   x.textAlign='left';x.font='600 22px Montserrat, sans-serif';x.fillStyle='#98a1b8';
   x.fillText('DATE',160,930);x.fillText('CERTIFICATE NO.',W-520,930);
@@ -460,6 +493,133 @@ $('#codeIn').onkeydown=e=>{if(e.key==='Enter')checkCode(e.target.value)};
 $('#dlCert').onclick=()=>{const a=document.createElement('a');a.download='SPEAK90-certificate-'+(window._cd&&window._cd.code||'')+'.png';a.href=$('#cv').toDataURL('image/png');a.click()};
 $('#cpLink').onclick=()=>{const u=location.origin+location.pathname+'?c='+(window._cd&&window._cd.code||'');try{navigator.clipboard.writeText(u);toast('লিংক কপি হয়েছে')}catch(e){toast(u)}};
 
+
+/* ---------- exam ---------- */
+st.ex=st.ex||{};
+const fmtT=ms=>new Date(+ms).toLocaleString('bn-BD',{dateStyle:'medium',timeStyle:'short'});
+const dnum=s=>String(s).replace(/\D/g,'').replace(/^88/,'');
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,24)}
+const fnum=v=>({integerValue:String(v)});
+let EXS=[];
+async function loadExams(){
+  try{
+    const r=await fetch(FB+'/sp_exam?pageSize=50&key='+K);if(!r.ok)throw 0;
+    const j=await r.json();EXS=(j.documents||[]).map(d=>Object.assign({id:d.name.split('/').pop()},parseDoc(d))).sort((a,b)=>b.start-a.start);
+  }catch(e){EXS=null}
+  drawExams();
+}
+function exState(x){const n=Date.now();if(x.status==='closed'||n>x.end)return'end';if(n<x.start)return'up';return'run'}
+function drawExams(){
+  const el=$('#examList');
+  if(EXS===null){el.innerHTML='<div class="box" style="color:var(--mute)">পরীক্ষার তালিকা আনা যায়নি। ইন্টারনেট দেখে পাতাটা আবার খোলো।</div>';return}
+  if(!EXS.length){el.innerHTML='<div class="box" style="color:var(--mute)">এখন কোনো পরীক্ষা নেই। নতুন পরীক্ষা ঘোষণা হলে এখানে দেখতে পাবে।</div>';$('#rEx').innerHTML='<option>পরীক্ষা নেই</option>';return}
+  $('#rEx').innerHTML=EXS.map(x=>`<option value="${esc(x.id)}">${esc(x.title)}</option>`).join('');
+  el.innerHTML=EXS.map(x=>{const s=exState(x);
+    return `<div class="ex-card" data-x="${esc(x.id)}"><h3>${esc(x.title)}<span class="st ${s}">${s==='run'?'চলছে':s==='up'?'আসছে':'শেষ'}</span></h3>
+     <div class="ex-meta"><span>🕒 শুরু: ${fmtT(x.start)}</span><span>⏳ শেষ: ${fmtT(x.end)}</span><span>⏱ ${bn(x.mins)} মিনিট</span><span>📝 ${bn(x.n)}টা প্রশ্ন</span>${x.minDays?`<span>📚 কমপক্ষে ${bn(x.minDays)}টা পাঠ শেষ থাকতে হবে</span>`:''}</div>
+     ${x.prize?`<div class="ex-prize">🏆 ${esc(x.prize)}${x.pass?'<br>🎓 '+bn(x.pass)+'/'+bn(x.n)+' বা বেশি পেলে মেধা সার্টিফিকেটের জন্য বিবেচিত হবে।':''}</div>`:''}
+     ${s==='run'?`<button class="btn p" data-go="${esc(x.id)}">পরীক্ষা দাও →</button>`:''}
+     ${s==='up'?'<div style="color:var(--mute)">পরীক্ষা শুরুর সময় এলে এখানে বোতাম আসবে। ততক্ষণ পাঠগুলো পড়ে নাও।</div>':''}
+     ${s==='end'?`<button class="btn g" data-lb="${esc(x.id)}">ফলাফল ও র‍্যাংক দেখো</button>`:''}
+     <div id="lb_${esc(x.id)}"></div></div>`}).join('');
+}
+$('#examList').onclick=e=>{
+  let b=e.target.closest('[data-go]');if(b)return startExam(b.dataset.go);
+  b=e.target.closest('[data-lb]');if(b)showLB(b.dataset.lb)
+};
+async function fetchRes(exId){
+  const r=await fetch(FB+':runQuery?key='+K,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({structuredQuery:{from:[{collectionId:'sp_res'}],where:{fieldFilter:{field:{fieldPath:'exam'},op:'EQUAL',value:{stringValue:exId}}},limit:500}})});
+  if(!r.ok)throw 0;const j=await r.json();
+  return j.filter(x=>x.document).map(x=>Object.assign({id:x.document.name.split('/').pop()},parseDoc(x.document))).sort((a,b)=>b.score-a.score||a.secs-b.secs);
+}
+async function showLB(exId){
+  const box=$('#lb_'+exId),x=EXS.find(e=>e.id===exId);box.innerHTML='<div style="color:var(--mute);margin-top:10px">আনা হচ্ছে…</div>';
+  if(!x.pub){box.innerHTML='<div class="msg">উত্তরপত্র যাচাই চলছে। ফল প্রকাশ হলে এখানে র‍্যাংক দেখা যাবে। নিজের নম্বর নিচের "আমার ফলাফল" থেকে দেখতে পারবে।</div>';return}
+  try{const L2=await fetchRes(exId);
+    box.innerHTML=L2.length?`<table class="lb"><tr><th>র‍্যাংক</th><th>নাম</th><th>নম্বর</th><th>সময়</th></tr>${L2.slice(0,20).map((r,i)=>`<tr><td>${bn(i+1)}${i<3?['🥇','🥈','🥉'][i]:''}</td><td>${esc(r.name)}</td><td>${bn(r.score)}/${bn(r.total)}</td><td>${bn(Math.floor(r.secs/60))}মি ${bn(r.secs%60)}সে</td></tr>`).join('')}</table>`:'<div class="msg">কেউ অংশ নেয়নি।</div>'
+  }catch(e){box.innerHTML='<div class="msg bad">আনা যায়নি</div>'}
+}
+let EX=null;
+async function startExam(id){
+  const x=EXS.find(e=>e.id===id);if(!x)return;
+  openOv(x.title);
+  const n=doneN();
+  if(x.minDays&&n<x.minDays){$('#les').innerHTML=`<h2>${esc(x.title)}</h2><div class="box"><h4>📚 আগে পাঠ শেষ করো</h4><p class="rule-t">এই পরীক্ষায় বসতে কমপক্ষে ${bn(x.minDays)}টা পাঠ শেষ করতে হবে। তোমার শেষ হয়েছে ${bn(n)}টা। পাঠ পড়ে আবার এসো।</p></div>`;return}
+  $('#les').innerHTML=`<div class="dn">EXAM</div><h2>${esc(x.title)}</h2><div class="box"><h4>📝 নিয়ম</h4><ul class="steps"><li><i>১</i>${bn(x.n)}টা প্রশ্ন, ${bn(x.mins)} মিনিট সময়।</li><li><i>২</i>প্রতিটা প্রশ্নের জন্য ১ নম্বর। ভুলের জন্য নম্বর কাটা যায় না।</li><li><i>৩</i>প্রতি নম্বর দিয়ে শুধু একবারই পরীক্ষা দেওয়া যাবে।</li><li><i>৪</i>সময় শেষ হলে নিজে থেকেই জমা হবে।</li><li><i>৫</i>অন্য কারও সাহায্য বা পাতা বদলানো ধরা পড়লে অ্যাডমিন নম্বর বাতিল করতে পারেন।</li></ul></div>
+   <div class="box"><h4>👤 তোমার তথ্য</h4><input class="inp" id="eName" placeholder="নাম (সার্টিফিকেটে যেভাবে চাও)" maxlength="60"><input class="inp" id="ePh" placeholder="মোবাইল/WhatsApp নম্বর" inputmode="tel" maxlength="20"><button class="btn p" id="eGo" style="width:100%">পরীক্ষা শুরু করো</button><div class="msg" id="eMsg"></div></div>`;
+  if(st.exLast){$('#eName').value=st.exLast.name||'';$('#ePh').value=st.exLast.ph||''}
+  $('#eGo').onclick=async()=>{
+    const name=$('#eName').value.trim(),ph=dnum($('#ePh').value),m=$('#eMsg');
+    if(name.length<2){m.className='msg bad';m.textContent='নাম লিখুন';return}
+    if(ph.length<10){m.className='msg bad';m.textContent='সঠিক নম্বর দিন';return}
+    m.className='msg';m.textContent='দেখা হচ্ছে…';
+    try{
+      const rid=id+'_'+await sha(id+':'+ph);
+      const r=await fetch(FB+'/sp_res/'+rid+'?key='+K);
+      if(r.ok){const d=parseDoc(await r.json());m.className='msg bad';m.textContent='এই নম্বর দিয়ে তুমি আগেই পরীক্ষা দিয়েছো। তোমার নম্বর: '+bn(d.score)+'/'+bn(d.total);return}
+      if(r.status!==404)throw 0;
+      st.exLast={name,ph};save();
+      EX={x,rid,name,ph,qs:window.EXAM.gen(x.seed,x.n),ans:[],i:0,t0:Date.now(),end:Date.now()+x.mins*60000,blur:0,done:false};
+      EX.vis=()=>{if(document.hidden&&!EX.done)EX.blur++};document.addEventListener('visibilitychange',EX.vis);
+      EX.tm=setInterval(tick,500);runQ();
+    }catch(e){m.className='msg bad';m.textContent='শুরু করা যায়নি, ইন্টারনেট দেখে আবার চেষ্টা করো'}
+  };
+}
+function tick(){
+  if(!EX||EX.done)return;const left=Math.max(0,Math.round((EX.end-Date.now())/1000)),t=$('#tmr');
+  if(t){t.textContent=bn(String(Math.floor(left/60)).padStart(2,'0'))+':'+bn(String(left%60).padStart(2,'0'));t.classList.toggle('low',left<60)}
+  if(left<=0)submitExam();
+}
+function runQ(){
+  const q=EX.qs[EX.i],last=EX.i===EX.qs.length-1;
+  $('#les').innerHTML=`<div class="qno"><span>প্রশ্ন ${bn(EX.i+1)} / ${bn(EX.qs.length)}</span><span class="timer" id="tmr"></span></div>
+   <div class="bar" style="margin:0 0 20px"><div style="width:${EX.i/EX.qs.length*100}%"></div></div>
+   <div class="box"><p class="rule-t" style="font-weight:600">${esc(q.q)}</p></div>
+   ${q.o.map((o,i)=>`<button class="opt${EX.ans[EX.i]===i?' sel':''}" data-o="${i}">${esc(o)}</button>`).join('')}
+   <div class="fin" style="margin-top:16px"><button class="btn g" id="eP" ${EX.i===0?'disabled style="opacity:.4"':''}>← আগের</button>${last?'<button class="btn p" id="eS">জমা দাও</button>':'<button class="btn p" id="eN">পরের →</button>'}</div>
+   <div class="msg" style="text-align:center">উত্তর না দিলেও পরের প্রশ্নে যেতে পারো। শেষে সবগুলো মিলিয়ে জমা দাও।</div>`;
+  tick();
+  document.querySelectorAll('#les .opt').forEach(b=>b.onclick=()=>{EX.ans[EX.i]=+b.dataset.o;runQ()});
+  if($('#eP'))$('#eP').onclick=()=>{EX.i--;runQ()};
+  if($('#eN'))$('#eN').onclick=()=>{EX.i++;runQ()};
+  if($('#eS'))$('#eS').onclick=()=>{const un=EX.qs.filter((_,i)=>EX.ans[i]===undefined).length;if(un&&!confirm(bn(un)+'টা প্রশ্নের উত্তর দেওয়া হয়নি। তবু জমা দেবে?'))return;submitExam()};
+}
+async function submitExam(){
+  if(!EX||EX.done)return;EX.done=true;clearInterval(EX.tm);document.removeEventListener('visibilitychange',EX.vis);
+  const {x,rid,name,ph}=EX,sc=window.EXAM.score(x.seed,x.n,EX.ans),secs=Math.min(Math.round((Date.now()-EX.t0)/1000),x.mins*60),at=Date.now();
+  $('#les').innerHTML='<div class="box" style="text-align:center">জমা দেওয়া হচ্ছে…</div>';
+  const P='projects/techcraft-gigs/databases/(default)/documents/';
+  let ok=false,why='';
+  try{
+    const r=await fetch(FB+':commit?key='+K,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({writes:[
+      {update:{name:P+'sp_res/'+rid,fields:{exam:fs(x.id),name:fs(name),score:fnum(sc),total:fnum(EX.qs.length),secs:fnum(secs),at:fnum(at)}},currentDocument:{exists:false}},
+      {update:{name:P+'sp_resp/'+rid,fields:{exam:fs(x.id),phone:fs(ph),ans:fs(EX.ans.map(a=>a===undefined?'-':a).join('')),blur:fnum(EX.blur),at:fnum(at)}},currentDocument:{exists:false}}]})});
+    ok=r.ok;if(!ok){const j=await r.json().catch(()=>({}));why=(j.error&&j.error.status)||''}
+  }catch(e){}
+  const wrong=EX.qs.map((q,i)=>({q,i,a:EX.ans[i]})).filter(o=>o.a!==o.q.a);
+  const pct=Math.round(sc/EX.qs.length*100),good=x.pass&&sc>=x.pass;
+  $('#les').innerHTML=`<div class="dn">RESULT</div><h2>${esc(x.title)}</h2>
+   <div class="box" style="text-align:center"><div style="font-size:56px;font-family:var(--serif)" class="grad">${bn(sc)}/${bn(EX.qs.length)}</div><div style="color:var(--mute)">${bn(pct)}% · সময় ${bn(Math.floor(secs/60))}মি ${bn(secs%60)}সে</div>
+   ${ok?`<p class="msg ${good?'ok':''}" style="margin-top:12px">${good?'🎉 মাশাআল্লাহ! তুমি মেধা সার্টিফিকেটের জন্য বিবেচিত হবে। অ্যাডমিন যাচাই করে যোগাযোগ করবেন।':'ফল জমা হয়েছে। র‍্যাংক ও পুরস্কারের ফল প্রকাশ হলে সাইটে দেখতে পাবে।'}</p>`
+       :`<p class="msg bad" style="margin-top:12px">ফল জমা হয়নি${why==='PERMISSION_DENIED'?' (সময় শেষ হয়ে যাওয়ায় বা আগেই দেওয়ায়)':'। ইন্টারনেট দেখে অ্যাডমিনকে জানাও'}।</p>`}</div>
+   <div class="box"><h4>❌ যেগুলো ভুল হয়েছে (${bn(wrong.length)}টা)</h4>${wrong.length?wrong.map(o=>`<div class="rev"><b>${bn(o.i+1)}. ${esc(o.q.q)}</b><span class="r">তোমার উত্তর: ${o.a===undefined?'দাওনি':esc(o.q.o[o.a])}</span><br><span class="g">সঠিক: ${esc(o.q.o[o.q.a])}</span><br><span style="color:var(--mute)">${esc(o.q.e||'')}</span></div>`).join(''):'<div class="msg ok">সবগুলো সঠিক! 🎉</div>'}</div>`;
+  EX=null;
+}
+$('#rGo').onclick=async()=>{
+  const o=$('#rOut'),id=$('#rEx').value,ph=dnum($('#rPh').value);
+  if(ph.length<10){o.className='msg bad';o.textContent='নম্বরটা দিন';return}
+  o.className='msg';o.textContent='দেখা হচ্ছে…';
+  try{
+    const rid=id+'_'+await sha(id+':'+ph),r=await fetch(FB+'/sp_res/'+rid+'?key='+K);
+    if(r.status===404){o.className='msg bad';o.textContent='এই নম্বর দিয়ে এই পরীক্ষায় কোনো ফল পাওয়া যায়নি।';return}
+    if(!r.ok)throw 0;const d=parseDoc(await r.json()),x=EXS&&EXS.find(e=>e.id===id);
+    let t='নাম: '+d.name+' · নম্বর: '+bn(d.score)+'/'+bn(d.total)+' · সময় '+bn(Math.floor(d.secs/60))+'মি '+bn(d.secs%60)+'সে';
+    if(x&&x.pub){try{const L2=await fetchRes(id);const k=L2.findIndex(z=>z.id===rid);if(k>=0)t+=' · র‍্যাংক '+bn(k+1)}catch(e){}}
+    o.className='msg ok';o.innerHTML=esc(t)+(d.cert?`<div class="codebox">${esc(d.cert)}</div><button class="btn p" id="rCert" style="width:100%">🎓 আমার সার্টিফিকেট দেখো</button>`:'');
+    const rc=$('#rCert');if(rc)rc.onclick=()=>{$('#codeIn').value=d.cert;$('#cert').scrollIntoView();checkCode(d.cert)};
+  }catch(e){o.className='msg bad';o.textContent='এখন দেখা যাচ্ছে না, আবার চেষ্টা করো'}
+};
+
 /* ---------- wiring ---------- */
 $('#cl').onclick=close;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
@@ -468,6 +628,7 @@ $('#gl').onclick=e=>{const b=e.target.closest('.gi');if(b)open(+b.dataset.d)};
 $('#q').oninput=drawG;
 $('#goNow').onclick=()=>open(cur());
 try{speechSynthesis.getVoices()}catch(e){}
+loadExams();setInterval(()=>{if(EXS&&EXS.length&&!EX)drawExams()},60000);
 paint();
 const qp=new URLSearchParams(location.search).get('c');
 if(qp){$('#codeIn').value=qp.toUpperCase();setTimeout(()=>{$('#cert').scrollIntoView();checkCode(qp)},400)}
